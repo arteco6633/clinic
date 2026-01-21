@@ -6,25 +6,26 @@ interface HeroProps {
 
 // Дефолтные данные
 const defaultHero = {
-  subtitle_top: 'MADE IN FRAMER',
-  tagline: 'THOUGHTFUL DESIGN ACROSS BRANDS, PRODUCTS, AND DIGITAL EXPERIENCES',
-  title_line1: 'DESIGN',
-  title_line2: 'FOR',
-  title_line3: 'EVERYONE',
-  description: 'WE HELP IDEAS BECOME CLEAR, USABLE, AND BEAUTIFULLY CRAFTED',
-  button_text: 'SCHEDULE A CALL',
+  subtitle_top: 'SELENA CLINIC',
+  tagline: 'ПРОФЕССИОНАЛЬНАЯ КОСМЕТОЛОГИЯ И ПЕРМАНЕНТНЫЙ МАКИЯЖ',
+  title: 'DESIGN FOR EVERYONE',
+  description: 'МЫ ПОМОГАЕМ ИДЕЯМ СТАТЬ ЯСНЫМИ, УДОБНЫМИ И КРАСИВО ОФОРМЛЕННЫМИ',
+  button_text: 'ЗАПИСАТЬСЯ',
   background_image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1200&q=80',
 }
 
 export function Hero({ hero }: HeroProps) {
-  const data = hero ? {
-    ...defaultHero,
-    title_line1: hero.title?.split(' ')[0] || defaultHero.title_line1,
-    title_line2: hero.title?.split(' ')[1] || defaultHero.title_line2,
-    title_line3: hero.title?.split(' ')[2] || defaultHero.title_line3,
-    description: hero.subtitle || defaultHero.description,
-    background_image: hero.background_image || defaultHero.background_image,
-  } : defaultHero
+  const data = {
+    subtitle_top: hero?.subtitle_top || defaultHero.subtitle_top,
+    tagline: hero?.tagline || defaultHero.tagline,
+    title: hero?.title || defaultHero.title,
+    description: hero?.description || defaultHero.description,
+    button_text: hero?.button_text || defaultHero.button_text,
+    background_image: hero?.background_image || defaultHero.background_image,
+  }
+
+  // Разбиваем заголовок на слова
+  const titleWords = data.title.split(' ')
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
@@ -49,7 +50,7 @@ export function Hero({ hero }: HeroProps) {
         >
           <img
             src={data.background_image}
-            alt="Design Hero"
+            alt="Hero"
             className="w-full h-full object-cover object-top grayscale"
             style={{
               filter: 'grayscale(100%) contrast(1.1)',
@@ -80,22 +81,25 @@ export function Hero({ hero }: HeroProps) {
             {data.tagline}
           </p>
 
-          {/* Main Title */}
+          {/* Main Title - Dynamic words */}
           <div className="space-y-0 md:space-y-[-20px] lg:space-y-[-30px]">
-            <h1 className="text-[60px] sm:text-[80px] md:text-[120px] lg:text-[160px] xl:text-[200px] font-black leading-[0.85] tracking-tight text-white">
-              {data.title_line1}
-            </h1>
-            <h1 className="text-[60px] sm:text-[80px] md:text-[120px] lg:text-[160px] xl:text-[200px] font-black leading-[0.85] tracking-tight text-white">
-              {data.title_line2}
-            </h1>
-            <h1 className="text-[60px] sm:text-[80px] md:text-[120px] lg:text-[160px] xl:text-[200px] font-black leading-[0.85] tracking-tight text-gradient-purple text-glow-purple">
-              {data.title_line3}
-            </h1>
+            {titleWords.map((word, index) => (
+              <h1 
+                key={index}
+                className={`text-[60px] sm:text-[80px] md:text-[120px] lg:text-[160px] xl:text-[200px] font-black leading-[0.85] tracking-tight ${
+                  index === titleWords.length - 1 
+                    ? 'text-gradient-purple text-glow-purple' 
+                    : 'text-white'
+                }`}
+              >
+                {word}
+              </h1>
+            ))}
           </div>
 
           {/* Bottom Description */}
           <p className="text-white/60 text-xs md:text-sm tracking-[0.15em] uppercase max-w-md mt-12 md:mt-20 mb-8">
-            <span className="text-purple">WE HELP</span> {data.description.replace('WE HELP ', '')}
+            {data.description}
           </p>
 
           {/* CTA Button */}

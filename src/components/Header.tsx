@@ -40,8 +40,8 @@ export function Header() {
 
           {/* Logo - Center */}
           <div className="absolute left-1/2 -translate-x-1/2">
-            <a href="/" className="text-white text-lg md:text-xl font-medium tracking-[0.3em] uppercase">
-              NIVORA
+            <a href="/" className="text-white text-lg md:text-xl font-medium tracking-[0.2em] uppercase">
+              SELENA CLINIC
             </a>
           </div>
 

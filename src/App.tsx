@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Header } from './components/Header'
 import { Hero } from './sections/Hero'
+import { AdminPage } from './pages/Admin'
 import { getHeroContent, type HeroContent } from './lib/supabase'
 
-function App() {
+function HomePage() {
   const [heroContent, setHeroContent] = useState<HeroContent | null>(null)
   const [loading, setLoading] = useState(true)
 
@@ -37,6 +39,17 @@ function App() {
         <Hero hero={heroContent} />
       </main>
     </div>
+  )
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/admin" element={<AdminPage />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
