@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -10,50 +10,41 @@
   }
   
   body {
-    @apply font-sans text-neutral-900 bg-white antialiased;
+    @apply font-sans bg-black text-white antialiased overflow-x-hidden;
   }
 
-  /* Фокус стили для доступности */
   *:focus-visible {
-    @apply outline-none ring-2 ring-primary ring-offset-2;
+    @apply outline-none ring-2 ring-purple ring-offset-2 ring-offset-black;
   }
 }
 
 @layer components {
-  .btn-primary {
+  .btn-outline {
     @apply inline-flex items-center justify-center px-8 py-4 
-           bg-primary text-white font-semibold text-base
-           rounded-xl transition-all duration-200
-           hover:bg-primary-dark hover:shadow-button
-           focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2
-           disabled:opacity-50 disabled:cursor-not-allowed;
+           border border-white/30 text-white font-medium text-sm tracking-widest uppercase
+           transition-all duration-300
+           hover:bg-white hover:text-black
+           focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black;
   }
 
-  .btn-accent {
-    @apply inline-flex items-center justify-center px-8 py-4 
-           bg-accent text-white font-semibold text-base
-           rounded-xl transition-all duration-200
-           hover:bg-accent-dark
-           focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2
-           disabled:opacity-50 disabled:cursor-not-allowed;
+  .text-glow-green {
+    text-shadow: 0 0 40px rgba(57, 255, 20, 0.5),
+                 0 0 80px rgba(57, 255, 20, 0.3),
+                 0 0 120px rgba(57, 255, 20, 0.2);
   }
 
-  .input-field {
-    @apply w-full px-4 py-4 bg-white border border-neutral-200
-           rounded-xl text-neutral-900 placeholder:text-neutral-400
-           transition-all duration-200
-           focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none;
+  .text-glow-purple {
+    text-shadow: 0 0 40px rgba(139, 92, 246, 0.6),
+                 0 0 80px rgba(139, 92, 246, 0.4),
+                 0 0 120px rgba(139, 92, 246, 0.2);
   }
+}
 
-  .nav-link {
-    @apply text-neutral-700 font-medium text-sm
-           hover:text-neutral-900 transition-colors duration-200;
-  }
-
-  .icon-button {
-    @apply w-11 h-11 flex items-center justify-center
-           rounded-full border border-neutral-200
-           text-neutral-600 hover:text-neutral-900 hover:border-neutral-300
-           transition-all duration-200;
+@layer utilities {
+  .text-gradient-purple {
+    background: linear-gradient(135deg, #8B5CF6 0%, #A78BFA 50%, #C4B5FD 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }

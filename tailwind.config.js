@@ -7,47 +7,41 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Основные цвета из референса
-        'primary': {
-          DEFAULT: '#2D7B6F',
-          dark: '#246860',
-          light: '#3A9485',
+        'black': '#000000',
+        'green': {
+          glow: '#39FF14',
+          dark: '#1a3d1a',
+          light: '#7FFF00',
         },
-        'accent': {
-          DEFAULT: '#E85D2D',
-          dark: '#D14F22',
-          light: '#F06E42',
+        'purple': {
+          DEFAULT: '#8B5CF6',
+          light: '#A78BFA',
+          glow: '#9945FF',
         },
-        'neutral': {
+        'gray': {
           50: '#FAFAFA',
-          100: '#F5F5F5',
-          200: '#E5E5E5',
-          300: '#D4D4D4',
-          400: '#A3A3A3',
-          500: '#737373',
-          600: '#525252',
-          700: '#404040',
-          800: '#262626',
-          900: '#171717',
-        },
-        'cream': '#F5F0E8',
+          100: '#F4F4F5',
+          200: '#E4E4E7',
+          300: '#D4D4D8',
+          400: '#A1A1AA',
+          500: '#71717A',
+          600: '#52525B',
+          700: '#3F3F46',
+          800: '#27272A',
+          900: '#18181B',
+        }
       },
       fontFamily: {
         'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
         'display': ['Inter', 'system-ui', 'sans-serif'],
       },
       fontSize: {
-        'hero': ['48px', { lineHeight: '1.1', fontWeight: '700' }],
-        'hero-mobile': ['32px', { lineHeight: '1.2', fontWeight: '700' }],
+        'massive': ['clamp(80px, 15vw, 200px)', { lineHeight: '0.9', fontWeight: '900' }],
+        'huge': ['clamp(60px, 12vw, 160px)', { lineHeight: '0.9', fontWeight: '900' }],
       },
-      boxShadow: {
-        'form': '0 4px 30px rgba(0, 0, 0, 0.1)',
-        'button': '0 4px 15px rgba(45, 123, 111, 0.3)',
-      },
-      borderRadius: {
-        'xl': '16px',
-        '2xl': '20px',
-        '3xl': '24px',
+      letterSpacing: {
+        'widest': '0.2em',
+        'ultra': '0.3em',
       },
     },
     screens: {
